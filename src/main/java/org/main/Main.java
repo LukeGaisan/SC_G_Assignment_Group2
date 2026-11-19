@@ -9,7 +9,6 @@ import com.stoneflamepath.gui.PlannerFrame;
 import com.stoneflamepath.model.TransitNetwork;
 import com.stoneflamepath.planning.CheapestStrategy;
 import com.stoneflamepath.planning.FastestStrategy;
-import com.stoneflamepath.planning.FewestTransfersStrategy;
 import com.stoneflamepath.planning.JourneyPlanner;
 import com.stoneflamepath.planning.JourneyRankingStrategy;
 import com.stoneflamepath.planning.StepFreeStrategy;
@@ -31,7 +30,7 @@ public class Main {
     public static void main(String[] args) {
         TransitNetwork network = SampleNetwork.build();
         List<JourneyRankingStrategy> strategies = List.of(new FastestStrategy(),
-                new CheapestStrategy(), new FewestTransfersStrategy(), new StepFreeStrategy());
+                new CheapestStrategy(), new StepFreeStrategy());
         DisruptionService disruptions = new DisruptionService();
         OperationsDashboard dashboard = new OperationsDashboard();
         network.getRoutes().forEach(route -> disruptions.subscribe(route.getRouteId(), dashboard));
